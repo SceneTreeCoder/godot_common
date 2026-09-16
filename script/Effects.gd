@@ -42,14 +42,14 @@ func use_effect(effect:Callable) -> void:
 		_current_effect = effect
 		apply_effect(effect)
 		_current_effect = _empty_effect
-func use_effects(...callableEffects) -> Effects:
+func use_effects(...callableEffects) -> Variant:
 	if callableEffects and callableEffects is Array and callableEffects.size() > 0:
 		for callableEffect in callableEffects:
 			self.use_effect(callableEffect)
 	return self
 
-static func computed(getter_func: Callable, ...callableEffects) -> Effects:
-	var computed_signal = Effects.new(null)
+static func computed(getter_func: Callable, ...callableEffects) -> Variant:
+	var computed_signal = self.new(null)
 	computed_signal.use_effect(func():
 		computed_signal.value = getter_func.call()
 	)
