@@ -1,10 +1,11 @@
-class_name Effects
+#class_name Effects
 extends RefCounted
 
 func _init(initialValue) -> void:
-	_value = initialValue
-const _empty_effect :Callable = max
-static var _current_effect: Callable = _empty_effect;
+	value = initialValue
+
+const _empty_effect :Variant = null
+static var _current_effect: Variant = null;
 var _effects: Dictionary[Callable, Object] = {}
 var _value:Variant = null
 
@@ -37,7 +38,7 @@ func apply_effect(effect:Callable) -> void:
 		else:
 			effect.call()
 
-func use_effect(effect:Callable) -> void:
+func use_effect(effect:Callable) -> void:	
 	if effect && effect.is_valid():
 		_current_effect = effect
 		apply_effect(effect)
