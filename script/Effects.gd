@@ -49,7 +49,7 @@ func use_effects(...callableEffects) -> Variant:
 	return self
 
 static func computed(getter_func: Callable, ...callableEffects) -> Variant:
-	var computed_signal = self.new(null)
+	var computed_signal = new(null)
 	computed_signal.use_effect(func():
 		computed_signal.value = getter_func.call()
 	)
