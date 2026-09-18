@@ -1,4 +1,5 @@
 #class_name Effects
+
 extends RefCounted
 
 func _init(initialValue) -> void:
